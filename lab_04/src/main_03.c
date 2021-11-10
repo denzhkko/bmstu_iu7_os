@@ -16,7 +16,8 @@
 
 int main() {
   int child_pids[CHILD_CNT] = {0};
-  char* cmds[CMD_CNT] = {"pwd", "ls"};
+  char* cmds[CMD_CNT] = {"/home/deniska/dev/bmstu_iu7_oop/lab_03/build/lab_03",
+                         "/home/deniska/dev/bmstu_iu7_cgcp/build/raytracing"};
 
   printf("parent born : PID = %d ; PPID = %d ; GROUP = %d\n", getpid(),
          getppid(), getpgrp());

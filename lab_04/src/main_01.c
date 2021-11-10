@@ -34,6 +34,7 @@ int main() {
     } else {
       // parent
       child_pids[child_i] = pid;
+      printf("parent mess : PID = %d ; CHILD_PID = %d\n", getpid(), pid);
     }
   }
 

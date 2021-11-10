@@ -57,7 +57,7 @@ int main() {
         printf("child%u send : PID = %d ; MSG = %s\n", child_i, getpid(),
                messages[msg_i]);
       } else {
-        printf("child%u send : quiet mode not message send", child_i);
+        printf("child%u send : quiet mode : not message send\n", child_i);
       }
 
       exit(ERR_OK);

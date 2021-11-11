@@ -1,4 +1,3 @@
-#include <assert.h>    // assert
 #include <stdbool.h>   // false
 #include <stdio.h>     // printf, fprintf, sleep
 #include <stdlib.h>    // exit, NULL
@@ -25,10 +24,10 @@ int main() {
   for (unsigned child_i = 0; child_i < CHILD_CNT; ++child_i) {
     int pid = fork();
 
-    if (-1 == pid) {
+    if (pid == -1) {
       fprintf(stderr, "Can't fork\n");
       exit(ERR_FORK);
-    } else if (0 == pid) {
+    } else if (pid == 0) {
       // child
       printf("child%u born : PID = %d ; PPID = %d ; GROUP = %d\n", child_i,
              getpid(), getppid(), getpgrp());
@@ -37,12 +36,10 @@ int main() {
 
       int rc = execlp(cmds[cmd_i], cmds[cmd_i], (char*)NULL);
 
-      if (-1 == rc) {
+      if (rc == -1) {
         fprintf(stderr, "exec failed\n");
         exit(ERR_EXEC);
       }
-
-      assert(false);
     } else {
       // parent
       child_pids[child_i] = pid;

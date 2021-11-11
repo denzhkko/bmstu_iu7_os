@@ -1,4 +1,3 @@
-#include <assert.h>    // assert
 #include <stdbool.h>   // false
 #include <stdio.h>     // printf, fprintf, sleep
 #include <stdlib.h>    // exit, NULL
@@ -31,7 +30,7 @@ int main() {
   int child_pids[CHILD_CNT] = {0};
   char* messages[MSG_CNT] = {"First", "Second"};
 
-  if (-1 == pipe(fd)) {
+  if (pipe(fd) == -1) {
     fprintf(stderr, "Can't pipe\n");
     exit(ERR_PIPE);
   }
@@ -42,17 +41,17 @@ int main() {
   for (unsigned child_i = 0; child_i < CHILD_CNT; ++child_i, sleep(2)) {
     int pid = fork();
 
-    if (-1 == pid) {
+    if (pid == -1) {
       fprintf(stderr, "Can't fork\n");
       exit(ERR_FORK);
-    } else if (0 == pid) {
+    } else if (pid == 0) {
       // child
       printf("child%u born : PID = %d ; PPID = %d ; GROUP = %d\n", child_i,
              getpid(), getppid(), getpgrp());
 
       int msg_i = child_i % MSG_CNT;
       close(fd[0]);
-      if (MOD_PRINT == mode) {
+      if (mode == MOD_PRINT) {
         write(fd[1], messages[msg_i], strlen(messages[msg_i]));
         printf("child%u send : PID = %d ; MSG = %s\n", child_i, getpid(),
                messages[msg_i]);
@@ -91,7 +90,7 @@ int main() {
   close(fd[1]);
   ssize_t readed = read(fd[0], buffer, BUFF_SZ);
 
-  if (-1 == readed) {
+  if (readed == -1) {
     printf("error on read\n");
   }
 

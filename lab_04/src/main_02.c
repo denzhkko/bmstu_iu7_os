@@ -18,10 +18,10 @@ int main() {
   for (unsigned child_i = 0; child_i < CHILD_CNT; ++child_i) {
     int pid = fork();
 
-    if (-1 == pid) {
+    if (pid == -1) {
       fprintf(stderr, "Can't fork\n");
       exit(ERR_FORK);
-    } else if (0 == pid) {
+    } else if (pid == 0) {
       // child
       printf("child%u born : PID = %d ; PPID = %d ; GROUP = %d\n", child_i,
              getpid(), getppid(), getpgrp());

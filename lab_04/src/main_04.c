@@ -19,7 +19,11 @@ int main() {
   int fd[2];
   char buffer[BUFF_SZ] = {0};
   int child_pids[CHILD_CNT] = {0};
-  char* messages[MSG_CNT] = {"First", "Second"};
+  char* messages[MSG_CNT] = {
+      "У окна дождь расскажет мне тайком, "
+      "Как он жил вчера, как он будет жить потом. "
+      "Я найду путь, который я искал, ",
+      "Дождь возьмет меня туда, где луна висит меж скал. "};
 
   if (pipe(fd) == -1) {
     fprintf(stderr, "Can't pipe\n");
@@ -82,6 +86,6 @@ int main() {
   }
 
   printf("parent recv : %s\n", buffer);
-  printf("parent died : PID = %d ; PPID = %d ; GROUP = %d\n", getpid(),
-         getppid(), getpgrp());
+
+  return 0;
 }

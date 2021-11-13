@@ -40,4 +40,6 @@ int main() {
 
   printf("parent died : PID = %d ; PPID = %d ; GROUP = %d\n", getpid(),
          getppid(), getpgrp());
+
+  return 0;
 }

@@ -1,0 +1,60 @@
+\chapter{Практический раздел}
+    
+    \section{Задание 1}
+    
+        \listingfile{main_01.c}{c}{Листинг программы 1. Часть 1}{firstline=1, lastline=39, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_01.c}{c}{Листинг программы 1. Часть 2}{firstline=40, lastline=45, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        
+        \imgw{task_01.png}{htb!}{150mm}{Пример работы программы 1}
+        
+        Программа запускает два новых процесса системным вызовом fork(). Процессы выводят собственные идентификаторы, идентификаторы предков, идентификаторы групп. Процесс предок также выводит идентификаторы потомков отдельным сообщением. После смерти предка потомки выподят свои сообщения повторно, идентификатор предка при этом равен единице.
+        
+    \newpage
+    
+    \section{Задание 2}
+    
+        \listingfile{main_02.c}{c}{Листинг программы 2. Часть 1}{firstline=1, lastline=42, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_02.c}{c}{Листинг программы 2. Часть 2}{firstline=43, lastline=63, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        
+        \imgw{task_02.png}{htb!}{150mm}{Пример работы программы 2}
+        
+        Программа работает по схеме первого задания. Но перед смертью процесс предок дожидается завершения процессов-потомков и выводит статус их завершения.
+        
+    \newpage
+    
+    \section{Задание 3}
+    
+        \listingfile{main_03.c}{c}{Листинг программы 3. Часть 1}{firstline=1, lastline=42, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_03.c}{c}{Листинг программы 3. Часть 2}{firstline=43, lastline=74, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        
+        \imgw{task_03_01.png}{htb!}{150mm}{Пример работы программы 3. Процесс запустил потомков}
+        \imgw{task_03_02.png}{htb!}{130mm}{Пример работы программы 3. Запущенное приложение потомок со сферами}
+        \imgw{task_03_02_02.png}{htb!}{130mm}{Пример работы программы 3. Запущенное приложение потомок с каркасной моделью}
+        \imgw{task_03_03.png}{htb!}{130mm}{Пример работы программы 3. Вывод программы после завершения потомков}
+        
+        Создаются 2 процесса потомка. Процесс-потомок вызывает системный вызов exec(), после чего запускается приложение с графическим интерфейсом, а процесс-предок ждет завершения процесса-потомка.
+        
+    \newpage
+    
+    \section{Задание 4}
+    
+        \listingfile{main_04.c}{c}{Листинг программы 4. Часть 1}{firstline=1, lastline=43, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_04.c}{c}{Листинг программы 4. Часть 2}{firstline=44, lastline=84, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_04.c}{c}{Листинг программы 4. Часть 2}{firstline=85, lastline=93, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        
+        \imgw{task_04.png}{htb!}{150mm}{Пример работы программы 4}
+        
+        В программе запускаются 2 процесса потомка. Каждый из них пишет в неименованный канал уникальное сообщения. Процесс предок читает из канала сообщения и выводит их на экран.
+        
+    \newpage
+    
+    \section{Задание 5}
+    
+        \listingfile{main_05.c}{c}{Листинг программы 5. Часть 1}{firstline=1, lastline=43, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_05.c}{c}{Листинг программы 5. Часть 2}{firstline=44, lastline=84, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        \listingfile{main_05.c}{c}{Листинг программы 5. Часть 3}{firstline=85, lastline=106, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+        
+        \imgw{task_05_01.png}{htb!}{150mm}{Пример работы программы 5 без посылки сигнала}
+        \imgw{task_05_02.png}{htb!}{150mm}{Пример работы программы 5 с посылкой сигнала}
+        
+        В программе запускаются 2 процесса потомка. Каждый из них пишет в неименованный канал уникальное сообщения. Процесс предок читает из канала сообщения и выводит их на экран. Если сигнал \( SIGINT \) послан, то устанавливается тихий режим, при котором процессы-потомки не передают сообещения через канал.

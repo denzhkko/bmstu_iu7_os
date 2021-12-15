@@ -1,0 +1,15 @@
+# executables
+
+producers-consumers
+readers-writers
+
+
+# objects files
+
+out/
+
+
+# vim
+
+**/.*.swp
+tags
